@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user -->
+<!-- -->
+<!-- For professional support please see -->
+<!-- http://www.qos.ch/shop/products/professionalSupport -->
+
+<configuration>
+  <appender name="SERVICELOG"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+    <File>${catalina.base}/logs/truexpense.log</File>
+    <Append>true</Append>
+    <encoder>
+      <pattern>%d [%t] %-5p %c - %m%n</pattern>
+    </encoder>
+    <rollingPolicy
+      class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <maxIndex>10</maxIndex>
+      <FileNamePattern>${catalina.base}/logs/truexpense.log.%i
+      </FileNamePattern>
+    </rollingPolicy>
+    <triggeringPolicy
+      class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>10MB</MaxFileSize>
+    </triggeringPolicy>
+  </appender>
+  <appender name="SPRINGFILE"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+    <File>${catalina.base}/logs/truexpense-spring.log</File>
+    <Append>true</Append>
+    <encoder>
+      <pattern>%d [%t] %-5p %c - %m%n</pattern>
+    </encoder>
+    <rollingPolicy
+      class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <maxIndex>10</maxIndex>
+      <FileNamePattern>${catalina.base}/logs/truexpense-spring.log.%i
+      </FileNamePattern>
+    </rollingPolicy>
+    <triggeringPolicy
+      class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>10MB</MaxFileSize>
+    </triggeringPolicy>
+  </appender>
+  <appender name="HIBERNATEFILE"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+    <Append>true</Append>
+    <File>${catalina.base}/logs/truexpense-hibernate.log</File>
+    <encoder>
+      <pattern>%d [%t] %-5p %c - %m%n</pattern>
+    </encoder>
+    <rollingPolicy
+      class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <maxIndex>10</maxIndex>
+      <FileNamePattern>${catalina.base}/logs/truexpense-hibernate.log.%i
+      </FileNamePattern>
+    </rollingPolicy>
+    <triggeringPolicy
+      class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>10MB</MaxFileSize>
+    </triggeringPolicy>
+  </appender>
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d [%t] [%p] %m%n</pattern>
+    </encoder>
+  </appender>
+  <logger name="com.resty" level="INFO">
+    <appender-ref ref="SERVICELOG" />
+  </logger>
+  <logger name="org.springframework.security" level="WARN">
+    <appender-ref ref="SPRINGFILE" />
+  </logger>
+  <logger name="org.hibernate" level="WARN">
+    <appender-ref ref="HIBERNATEFILE" />
+  </logger>
+  <logger name="org.springframework" level="WARN">
+    <appender-ref ref="SPRINGFILE" />
+  </logger>
+  <root level="INFO">
+    <appender-ref ref="CONSOLE" />
+  </root>
+</configuration>

@@ -4,6 +4,7 @@ import javax.servlet.Filter;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
+import org.springframework.web.filter.HttpPutFormContentFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ServletInitializer extends
@@ -29,7 +30,8 @@ public class ServletInitializer extends
     CharacterEncodingFilter charFilter = new CharacterEncodingFilter();
     charFilter.setEncoding("UTF-8");
     charFilter.setForceEncoding(true);
-    return new Filter[] { new HiddenHttpMethodFilter(), charFilter };
+    return new Filter[] { new HiddenHttpMethodFilter(), charFilter,
+        new HttpPutFormContentFilter() };
   }
 
 }

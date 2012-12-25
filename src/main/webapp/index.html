@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="/Resty/js/bootstrap.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+    <script src="/Resty/js/app.js"></script>
+    <script src="/Resty/js/controller.js"></script>
     <link rel="stylesheet" href="/Resty/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="/Resty/css/bootstrap-responsive.css" type="text/css" />
-    <title>Hello!</title>
+    <title>Resty</title>
   </head>
   <body>
     <h1>Welcome to Resty</h1>
-  </body>
+
+  <ul class="menu">
+    <li><a href="#/view1">view1</a></li>
+    <li><a href="#/view2">view2</a></li>
+  </ul>
+
+  <div ng-view></div>
+</body>
 </html>

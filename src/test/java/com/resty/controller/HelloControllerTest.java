@@ -44,14 +44,14 @@ public class HelloControllerTest {
   public void getHelloJson() throws Exception {
     this.mockMvc.perform(get("/hello").accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
-        .andExpect(content().contentType("application/json"))
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$.result").value("hello"));
   }
 
   @Test
   public void getHelloJsonFile() throws Exception {
     this.mockMvc.perform(get("/hello.json")).andExpect(status().isOk())
-        .andExpect(content().contentType("application/json"))
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$.result").value("hello"));
   }
 }

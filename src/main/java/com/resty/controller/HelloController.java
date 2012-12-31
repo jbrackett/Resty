@@ -18,7 +18,7 @@ public class HelloController {
   @RequestMapping(value = "/hello", produces = "application/json")
   @ResponseBody
   public String helloWorldJson() {
-    return "{result: hello}";
+    return "{\"result\": \"hello\"}";
   }
 
 }

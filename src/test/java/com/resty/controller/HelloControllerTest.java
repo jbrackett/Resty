@@ -54,4 +54,10 @@ public class HelloControllerTest {
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$.result").value("hello"));
   }
+
+  @Test
+  public void getRandomJsonFile() throws Exception {
+    this.mockMvc.perform(get("/random.json")).andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+  }
 }

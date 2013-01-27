@@ -23,8 +23,8 @@ public class HelloController {
 
   @RequestMapping(value = "/hello", produces = "application/json")
   @ResponseBody
-  public String helloWorldJson() {
-    return "{\"result\": \"hello\"}";
+  public Result helloWorldJson() {
+    return new Result("hello");
   }
 
   @RequestMapping(value = "random", produces = "application/json")

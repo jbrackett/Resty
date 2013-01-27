@@ -4,7 +4,7 @@
 
 function MyCtrl1($scope, $http) {
   $http.get('/Resty/hello.json').success(function(data) {
-    $scope.result = data.result;
+    $scope.result = data.message;
   });
 }
 MyCtrl1.$inject = ['$scope', '$http'];
